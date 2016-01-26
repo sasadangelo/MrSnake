@@ -5,7 +5,7 @@
       android:versionName="1.0">
     <application android:icon="@drawable/icon" android:label="Snakoid">
         <activity android:name=".SnakoidGame"
-                  android:label="Droids"
+                  android:label="Snakoid"
                   android:configChanges="keyboard|keyboardHidden|orientation"
                   android:screenOrientation="portrait">
             <intent-filter>
