@@ -1,12 +1,12 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.model;
+
+import org.androidforfun.retrogames.framework.FileIO;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-
-import org.androidforfun.retrogames.framework.FileIO;
 
 public class Settings {
     public static boolean soundEnabled = true;

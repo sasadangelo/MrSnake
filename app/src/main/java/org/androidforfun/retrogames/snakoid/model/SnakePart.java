@@ -1,4 +1,4 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.model;
 
 public class SnakePart {
     public int x, y;

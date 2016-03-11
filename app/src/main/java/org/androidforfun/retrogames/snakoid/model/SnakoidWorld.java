@@ -1,29 +1,49 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.model;
 
 import java.util.Random;
 
-public class World {
+public class SnakoidWorld {
     static final int WORLD_WIDTH = 10;
     static final int WORLD_HEIGHT = 13;
     static final int SCORE_INCREMENT = 10;
     static final float TICK_INITIAL = 0.5f;
     static final float TICK_DECREMENT = 0.05f;
 
-    public Snake snake;
-    public Stain stain;
-    public boolean gameOver = false;;
-    public int score = 0;
+    // the possible game status values
+    public enum GameState {
+        Ready,
+        Running,
+        Paused,
+        GameOver
+    }
+
+    GameState state = GameState.Ready;
 
     boolean fields[][] = new boolean[WORLD_WIDTH][WORLD_HEIGHT];
     Random random = new Random();
     float tickTime = 0;
     static float tick = TICK_INITIAL;
+    // the user score
+    private int score = 0;
 
-    public World() {
+    private Snake snake;
+    private Stain stain;
+
+    // the private static instance used to implement the Singleton pattern.
+    private static SnakoidWorld instance = null;
+    
+    private SnakoidWorld() {
         snake = new Snake();
         placeStain();
     }
 
+    public static SnakoidWorld getInstance() {
+        if (instance == null) {
+            instance = new SnakoidWorld();
+        }
+        return instance;
+    }
+    
     private void placeStain() {
         for (int x = 0; x < WORLD_WIDTH; x++) {
             for (int y = 0; y < WORLD_HEIGHT; y++) {
@@ -55,7 +75,7 @@ public class World {
     }
 
     public void update(float deltaTime) {
-        if (gameOver)
+        if (state == GameState.GameOver)
             return;
 
         tickTime += deltaTime;
@@ -64,7 +84,7 @@ public class World {
             tickTime -= tick;
             snake.advance();
             if (snake.checkBitten()) {
-                gameOver = true;
+                state = GameState.GameOver;
                 return;
             }
 
@@ -73,7 +93,7 @@ public class World {
                 score += SCORE_INCREMENT;
                 snake.eat();
                 if (snake.parts.size() == WORLD_WIDTH * WORLD_HEIGHT) {
-                    gameOver = true;
+                    state = GameState.GameOver;
                     return;
                 } else {
                     placeStain();
@@ -84,5 +104,35 @@ public class World {
                 }
             }
         }
+    }
+
+    public void clear() {
+        score = 0;
+        snake.reset();
+        placeStain();
+        state = GameState.Ready;
+    }
+    public GameState getState() {
+        return state;
+    }
+
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Snake getSnake() {
+        return snake;
+    }
+
+    public Stain getStain() {
+        return stain;
     }
 }

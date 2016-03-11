@@ -1,4 +1,4 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,8 @@ public class Snake {
     public List<SnakePart> parts = new ArrayList<SnakePart>();
     public int direction;    
     
-    public Snake() {        
-        direction = UP;
-        parts.add(new SnakePart(5, 6));
-        parts.add(new SnakePart(5, 7));
-        parts.add(new SnakePart(5, 8));
+    public Snake() {
+        reset();
     }
     
     public void turnLeft() {
@@ -65,7 +62,15 @@ public class Snake {
         if(head.y > 12)
             head.y = 0;
     }
-    
+
+    public void reset() {
+        direction = UP;
+        parts.clear();
+        parts.add(new SnakePart(5, 6));
+        parts.add(new SnakePart(5, 7));
+        parts.add(new SnakePart(5, 8));
+    }
+
     public boolean checkBitten() {
         int len = parts.size();
         SnakePart head = parts.get(0);

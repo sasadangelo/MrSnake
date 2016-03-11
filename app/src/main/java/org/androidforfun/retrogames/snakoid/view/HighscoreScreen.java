@@ -1,11 +1,12 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.view;
 
-import java.util.List;
-
+import org.androidforfun.retrogames.snakoid.model.Settings;
 import org.androidforfun.retrogames.framework.Game;
 import org.androidforfun.retrogames.framework.Graphics;
-import org.androidforfun.retrogames.framework.Screen;
 import org.androidforfun.retrogames.framework.Input.TouchEvent;
+import org.androidforfun.retrogames.framework.Screen;
+
+import java.util.List;
 
 public class HighscoreScreen extends Screen {
     String lines[] = new String[5];
@@ -27,7 +28,7 @@ public class HighscoreScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
-                if (event.x >= 32 && event.x < 82 && event.y >= 370 && event.y < 420) {
+                if (event.x >= 32 &&  event.x < 82 && event.y >= 370 && event.y < 430) {
                     if(Settings.soundEnabled)
                         Assets.click.play(1);
                     game.setScreen(new StartScreen(game));
@@ -38,10 +39,10 @@ public class HighscoreScreen extends Screen {
     }
 
     @Override
-    public void present(float deltaTime) {
+    public void draw(float deltaTime) {
         Graphics g = game.getGraphics();
 
-        g.drawPixmap(Assets.startscreen, 0, 0);
+        g.drawPixmap(Assets.highscoresscreen, 0, 0);
         g.drawPixmap(Assets.mainmenu, 64, 20, 0, 42, 196, 42);
 
         int y = 100;

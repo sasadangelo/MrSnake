@@ -1,4 +1,4 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.view;
 
 import org.androidforfun.retrogames.framework.Pixmap;
 import org.androidforfun.retrogames.framework.Sound;

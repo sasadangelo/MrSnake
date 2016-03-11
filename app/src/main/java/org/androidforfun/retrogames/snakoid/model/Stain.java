@@ -1,4 +1,4 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.model;
 
 public class Stain {
     public static final int TYPE_1 = 0;

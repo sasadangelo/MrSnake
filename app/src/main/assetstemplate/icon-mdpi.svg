@@ -69,7 +69,10 @@
            y="246.92914" /></flowRegion><flowPara
          id="flowPara5206" /></flowRoot>    <g
        id="g4994"
-       transform="matrix(0.20950246,0,0,0.3117834,-3.6395941,728.13145)">
+       transform="matrix(0.20950246,0,0,0.3117834,-3.6395941,728.13145)"
+       inkscape:export-filename="C:\workspace.snakoid\Snakoid\app\src\main\res\drawable-mdpi\icon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <flowRoot
          transform="translate(46.202637,917.70302)"
          style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

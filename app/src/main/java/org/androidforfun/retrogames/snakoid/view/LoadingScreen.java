@@ -1,23 +1,28 @@
-package org.androidforfun.retrogames.snakoid;
+package org.androidforfun.retrogames.snakoid.view;
 
+import android.util.Log;
 import org.androidforfun.retrogames.framework.Game;
 import org.androidforfun.retrogames.framework.Graphics;
-import org.androidforfun.retrogames.framework.Screen;
 import org.androidforfun.retrogames.framework.Graphics.PixmapFormat;
+import org.androidforfun.retrogames.framework.Screen;
+import org.androidforfun.retrogames.snakoid.model.Settings;
 
 public class LoadingScreen extends Screen {
+    private static final String LOG_TAG = "Snakoid.LoadingScreen";
     public LoadingScreen(Game game) {
         super(game);
     }
 
     @Override
     public void update(float deltaTime) {
+        Log.i(LOG_TAG, "update -- begin");
         Graphics g = game.getGraphics();
         Assets.background = g.newPixmap("background.png", PixmapFormat.RGB565);
         Assets.logo = g.newPixmap("logo.png", PixmapFormat.ARGB4444);
 
         Assets.startscreen = g.newPixmap("startscreen.png", PixmapFormat.RGB565);
         Assets.gamescreen = g.newPixmap("gamescreen.png", PixmapFormat.RGB565);
+        Assets.highscoresscreen = Assets.startscreen;
         Assets.gameoverscreen = g.newPixmap("gameover.png", PixmapFormat.RGB565);
 
         Assets.mainmenu = g.newPixmap("mainmenu.png", PixmapFormat.ARGB4444);
@@ -43,7 +48,7 @@ public class LoadingScreen extends Screen {
     }
 
     @Override
-    public void present(float deltaTime) {
+    public void draw(float deltaTime) {
 
     }
 
