@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.androidforfun.retrogames.snakoid"
+      package="org.androidforfun.snakoid"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:icon="@drawable/icon" android:label="Snakoid">
+    <application android:icon="@drawable/icon" android:label="Mr Snake">
         <activity android:name=".view.SnakoidGame"
-                  android:label="Snakoid"
+                  android:label="Mr Snake"
                   android:configChanges="keyboard|keyboardHidden|orientation"
                   android:screenOrientation="portrait">
             <intent-filter>

@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="icon-mdpi.svg"
-   inkscape:export-filename="C:\workspace.retrogames\RetroGames\app\src\main\res\drawable-mdpi\icon.png"
+   inkscape:export-filename="C:\workspace.snakoid\Snakoid\app\src\main\res\drawable-mdpi\icon.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -29,15 +29,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="-81.79992"
+     inkscape:cx="-167.04992"
      inkscape:cy="100"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1015"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-height="1028"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      units="px" />
   <metadata
@@ -68,13 +68,10 @@
            x="397.14285"
            y="246.92914" /></flowRegion><flowPara
          id="flowPara5206" /></flowRoot>    <g
-       id="g4994"
-       transform="matrix(0.20950246,0,0,0.3117834,-3.6395941,728.13145)"
-       inkscape:export-filename="C:\workspace.snakoid\Snakoid\app\src\main\res\drawable-mdpi\icon.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       id="g7276"
+       transform="translate(-0.47913639,2.916982)">
       <flowRoot
-         transform="translate(46.202637,917.70302)"
+         transform="matrix(0.20950246,0,0,0.3117834,25.639556,1014.7861)"
          style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          id="flowRoot5986-4"
          xml:space="preserve"><flowRegion
@@ -84,9 +81,9 @@
              height="103.5"
              width="213"
              id="rect5990-1" /></flowRegion><flowPara
-           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70px;font-family:'Monotype Corsiva';-inkscape-font-specification:'Monotype Corsiva Italic';fill:#ffffff;stroke:#ffcc00"
-           id="flowPara5992-2">nakoid</flowPara></flowRoot>      <flowRoot
-         transform="matrix(1.2043268,0,0,1.1777778,-4.509965,879.09829)"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48.90901947px;font-family:'Monotype Corsiva';-inkscape-font-specification:'Monotype Corsiva Italic';fill:#ffffff;stroke:#ff7f27;stroke-opacity:1"
+           id="flowPara5992-2">nake</flowPara></flowRoot>      <flowRoot
+         transform="matrix(0.25230943,0,0,0.36721157,17.415557,1005.5275)"
          style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          id="flowRoot5986-4-7"
          xml:space="preserve"><flowRegion
@@ -96,7 +93,31 @@
              height="103.5"
              width="213"
              id="rect5990-1-5" /></flowRegion><flowPara
-           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;font-family:'Monotype Corsiva';-inkscape-font-specification:'Monotype Corsiva Italic';fill:#ffffff;stroke:#ffcc00"
-           id="flowPara5992-2-6">S</flowPara></flowRoot>    </g>
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65.70600891px;font-family:'Monotype Corsiva';-inkscape-font-specification:'Monotype Corsiva Italic';fill:#ffffff;stroke:#ff7f27;stroke-opacity:1"
+           id="flowPara5992-2-6">S</flowPara></flowRoot>      <flowRoot
+         transform="matrix(0.20950246,0,0,0.3117834,12.291674,1014.0447)"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot5986-4-5"
+         xml:space="preserve"><flowRegion
+           id="flowRegion5988-7-5"><rect
+             y="10.5"
+             x="16.5"
+             height="103.5"
+             width="213"
+             id="rect5990-1-9" /></flowRegion><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48.90901947px;font-family:'Monotype Corsiva';-inkscape-font-specification:'Monotype Corsiva Italic';fill:#ffffff;stroke:#ff7f27;stroke-opacity:1"
+           id="flowPara5992-2-0">r</flowPara></flowRoot>      <flowRoot
+         transform="matrix(0.25230943,0,0,0.36721157,-2.8266057,1006.4464)"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot5986-4-7-8"
+         xml:space="preserve"><flowRegion
+           id="flowRegion5988-7-0-5"><rect
+             y="10.5"
+             x="16.5"
+             height="103.5"
+             width="213"
+             id="rect5990-1-5-6" /></flowRegion><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65.70600891px;font-family:'Monotype Corsiva';-inkscape-font-specification:'Monotype Corsiva Italic';fill:#ffffff;stroke:#ff7f27;stroke-opacity:1"
+           id="flowPara5992-2-6-8">M</flowPara></flowRoot>    </g>
   </g>
 </svg>
