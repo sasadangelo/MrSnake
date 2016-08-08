@@ -6,14 +6,10 @@ import org.androidforfun.snakoid.framework.Game;
 import org.androidforfun.snakoid.framework.Graphics;
 import org.androidforfun.snakoid.framework.Input.TouchEvent;
 import org.androidforfun.snakoid.framework.Pixmap;
+import org.androidforfun.snakoid.framework.Rectangle;
 import org.androidforfun.snakoid.framework.Screen;
 import org.androidforfun.snakoid.framework.TextStyle;
 import org.androidforfun.snakoid.model.Settings;
-import org.androidforfun.snakoid.model.Snake;
-import org.androidforfun.snakoid.model.SnakeBody;
-import org.androidforfun.snakoid.model.Fruit;
-import org.androidforfun.snakoid.model.SnakeHead;
-import org.androidforfun.snakoid.model.SnakeTail;
 import org.androidforfun.snakoid.model.SnakoidWorld;
 
 import java.util.EnumMap;
@@ -24,8 +20,17 @@ public class GameScreen extends Screen {
     int oldScore = 0;
     private static final String LOG_TAG = "Snakoid.GameScreen";
     String score = "0";
-    Map<SnakoidWorld.GameState, GameState> states = new EnumMap<SnakoidWorld.GameState, GameState>(SnakoidWorld.GameState.class);
-    
+    Map<SnakoidWorld.GameState, GameState> states = new EnumMap<>(SnakoidWorld.GameState.class);
+
+    private Rectangle pauseButtonBounds;
+    private Rectangle leftButtonBounds;
+    private Rectangle rightButtonBounds;
+    private Rectangle xButtonBounds;
+    private Rectangle resumeMenuBounds;
+    private Rectangle homeMenuBounds;
+
+    private SnakoidWorldRenderer renderer;
+
     public GameScreen(Game game) {
         super(game);
         Log.i(LOG_TAG, "constructor -- begin");
@@ -33,6 +38,15 @@ public class GameScreen extends Screen {
         states.put(SnakoidWorld.GameState.Ready, new GameReady());
         states.put(SnakoidWorld.GameState.Running, new GameRunning());
         states.put(SnakoidWorld.GameState.GameOver, new GameOver());
+
+        pauseButtonBounds=new Rectangle(5, 20, 50, 50);
+        leftButtonBounds=new Rectangle(20, 425, 50, 50);
+        rightButtonBounds=new Rectangle(250, 425, 50, 50);
+        resumeMenuBounds=new Rectangle(80, 100, 160, 48);
+        homeMenuBounds=new Rectangle(80, 148, 160, 48);
+        xButtonBounds=new Rectangle(128, 200, 50, 50);
+
+        renderer = new SnakoidWorldRenderer(game.getGraphics());
     }
 
     @Override
@@ -40,7 +54,6 @@ public class GameScreen extends Screen {
         Log.i(LOG_TAG, "update -- begin");
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();
-        
         states.get(SnakoidWorld.getInstance().getState()).update(touchEvents, deltaTime);
     }
 
@@ -50,7 +63,7 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
         
         g.drawPixmap(Assets.background, 0, 0);
-        drawSnakoid();
+        renderer.draw();
         states.get(SnakoidWorld.getInstance().getState()).draw();
         TextStyle style = new TextStyle();
         style.setColor(0xffffffff);
@@ -58,118 +71,6 @@ public class GameScreen extends Screen {
         style.setStyle(TextStyle.Style.BOLD);
         style.setAlign(TextStyle.Align.CENTER);
         g.drawText(score, g.getWidth()/2, g.getHeight()-16, style);
-    }
-    
-    private void drawSnakoid() {
-        Graphics g = game.getGraphics();
-        Snake snake = SnakoidWorld.getInstance().getSnake();
-        Fruit fruit = SnakoidWorld.getInstance().getFruit();
-
-        Pixmap fruitPixmap = null;
-        switch(fruit.getType()) {
-            case Fruit.APPLE:
-                fruitPixmap = Assets.apple;
-                break;
-            case Fruit.CHERRIES:
-                fruitPixmap = Assets.cherries;
-                break;
-            case Fruit.ORANGE:
-                fruitPixmap = Assets.orange;
-                break;
-        }
-        int x = fruit.getX() * 32;
-        int y = fruit.getY() * 32;
-        g.drawPixmap(fruitPixmap, x, y);
-        
-        int len = snake.getLength();
-        Pixmap snakeBodyPixmap = null;
-        for(int i = 0; i < len; i++) {
-            SnakeBody snakeBody = snake.getSnakeBody(i);
-            if (snakeBody instanceof SnakeHead) {
-                switch (snakeBody.getDirection()) {
-                    case UP:
-                        snakeBodyPixmap=Assets.headUp;
-                        break;
-                    case DOWN:
-                        snakeBodyPixmap=Assets.headDown;
-                        break;
-                    case LEFT:
-                        snakeBodyPixmap=Assets.headLeft;
-                        break;
-                    case RIGHT:
-                        snakeBodyPixmap=Assets.headRight;
-                        break;
-                }
-            } else if (snakeBody instanceof SnakeTail) {
-                switch (snakeBody.getDirection()) {
-                    case UP:
-                        snakeBodyPixmap=Assets.tailUp;
-                        break;
-                    case DOWN:
-                        snakeBodyPixmap=Assets.tailDown;
-                        break;
-                    case LEFT:
-                        snakeBodyPixmap=Assets.tailLeft;
-                        break;
-                    case RIGHT:
-                        snakeBodyPixmap=Assets.tailRight;
-                        break;
-                }
-            } else {
-                switch (snakeBody.getDirection()) {
-                    case UP:
-                    case DOWN:
-                        snakeBodyPixmap=Assets.bodyVertical;
-                        break;
-                    case LEFT:
-                    case RIGHT:
-                        snakeBodyPixmap=Assets.bodyHorizontal;
-                        break;
-                    // The turn LEFT - DOWN anticlockwise is similar to UP - RIGHT:
-                    //
-                    //  ___
-                    // |
-                    // |
-                    case UP_RIGHT:
-                    case LEFT_DOWN:
-                        snakeBodyPixmap=Assets.bodyCornerUpRight;
-                        break;
-                    // The turn UP - LEFT anticlockwise is similar to RIGHT - DOWN:
-                    //
-                    //  ___
-                    //     |
-                    //     |
-                    case RIGHT_DOWN:
-                    case UP_LEFT:
-                        snakeBodyPixmap=Assets.bodyCornerRightDown;
-                        break;
-                    // The turn RIGHT - UP anticlockwise is similar to DOWN - LEFT:
-                    //
-                    //
-                    //     |
-                    //  ___|
-                    case DOWN_LEFT:
-                    case RIGHT_UP:
-                        snakeBodyPixmap=Assets.bodyCornerDownLeft;
-                        break;
-                    // The turn DOWN - RIGHT anticlockwise is similar to LEFT - UP:
-                    //
-                    //
-                    // |
-                    // |___
-                    case LEFT_UP:
-                    case DOWN_RIGHT:
-                        snakeBodyPixmap=Assets.bodyCornerLeftUp;
-                        break;
-                }
-            }
-            x = snakeBody.getX() * 32;
-            y = snakeBody.getY() * 32;
-            g.drawPixmap(snakeBodyPixmap, x, y);
-        }
-        
-        g.drawPixmap(Assets.controlpanelshadow, 0, 388);
-        g.drawPixmap(Assets.controlpanel, 0, 392);
     }
     
     public void drawText(Graphics g, String line, int x, int y) {
@@ -221,21 +122,23 @@ public class GameScreen extends Screen {
             int len = touchEvents.size();
             for(int i = 0; i < len; i++) {
                 TouchEvent event = touchEvents.get(i);
-                if(event.type == TouchEvent.TOUCH_UP) {
-                    if(event.x >= 5 && event.x < 55 && event.y >= 20 && event.y < 70) {
-                        if(Settings.soundEnabled)
-                            Assets.click.play(1);
-                        SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Paused);
-                        return;
-                    }
-                }
-                if(event.type == TouchEvent.TOUCH_DOWN) {
-                    if(event.x >= 20 && event.x < 70 && event.y >= 425 && event.y < 475) {
-                        SnakoidWorld.getInstance().getSnake().turnAntiClockwise();
-                    }
-                    if(event.x >= 250 && event.x < 300 && event.y >= 425 && event.y < 475) {
-                        SnakoidWorld.getInstance().getSnake().turnClockwise();
-                    }
+                switch(event.type) {
+                    case TouchEvent.TOUCH_UP:
+                        if(pauseButtonBounds.contains(event.x, event.y)) {
+                            if(Settings.soundEnabled)
+                                Assets.click.play(1);
+                            SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Paused);
+                            return;
+                        }
+                        break;
+                    case TouchEvent.TOUCH_DOWN:
+                        if(leftButtonBounds.contains(event.x, event.y)) {
+                            SnakoidWorld.getInstance().getSnake().turnAntiClockwise();
+                        }
+                        if(rightButtonBounds.contains(event.x, event.y)) {
+                            SnakoidWorld.getInstance().getSnake().turnClockwise();
+                        }
+                        break;
                 }
             }
 
@@ -256,9 +159,12 @@ public class GameScreen extends Screen {
             Log.i(LOG_TAG, "draw -- begin");
             Graphics g = game.getGraphics();
 
-            g.drawPixmap(Assets.buttons, 5, 20, 50, 100, 51, 51); // pause button
-            g.drawPixmap(Assets.buttons, 20, 425, 50, 150, 51, 51);  // left button
-            g.drawPixmap(Assets.buttons, 250, 425, 50, 200, 51, 51); // right button
+            g.drawPixmap(Assets.buttons, pauseButtonBounds.getX(), pauseButtonBounds.getY(), 50, 100,
+                    pauseButtonBounds.getWidth()+1, pauseButtonBounds.getHeight()+1); // pause button
+            g.drawPixmap(Assets.buttons, leftButtonBounds.getX(), leftButtonBounds.getY(), 50, 150,
+                    leftButtonBounds.getWidth()+1, leftButtonBounds.getHeight()+1);  // left button
+            g.drawPixmap(Assets.buttons, rightButtonBounds.getX(), rightButtonBounds.getY(), 50, 200,
+                    rightButtonBounds.getWidth()+1, rightButtonBounds.getHeight()+1); // right button
         }
     }
     
@@ -269,19 +175,17 @@ public class GameScreen extends Screen {
             for(int i = 0; i < len; i++) {
                 TouchEvent event = touchEvents.get(i);
                 if(event.type == TouchEvent.TOUCH_UP) {
-                    if(event.x > 80 && event.x <= 240) {
-                        if(event.y > 100 && event.y <= 148) {
-                            if(Settings.soundEnabled)
-                                Assets.click.play(1);
-                            SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Running);
-                            return;
-                        }                    
-                        if(event.y > 148 && event.y < 196) {
-                            if(Settings.soundEnabled)
-                                Assets.click.play(1);
-                            game.setScreen(new StartScreen(game));
-                            return;
-                        }
+                    if(resumeMenuBounds.contains(event.x, event.y)) {
+                        if(Settings.soundEnabled)
+                            Assets.click.play(1);
+                        SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Running);
+                        return;
+                    }
+                    if(homeMenuBounds.contains(event.x, event.y)) {
+                        if(Settings.soundEnabled)
+                            Assets.click.play(1);
+                        game.setScreen(new StartScreen(game));
+                        return;
                     }
                 }
             }
@@ -292,8 +196,10 @@ public class GameScreen extends Screen {
             Graphics g = game.getGraphics();
 
             g.drawPixmap(Assets.pausemenu, 79, 100);
-            g.drawPixmap(Assets.buttons, 20, 425, 50, 150, 51, 51);  // left button
-            g.drawPixmap(Assets.buttons, 250, 425, 50, 200, 51, 51); // right button
+            g.drawPixmap(Assets.buttons, leftButtonBounds.getX(), leftButtonBounds.getY(), 50, 150,
+                    leftButtonBounds.getWidth()+1, leftButtonBounds.getHeight()+1);  // left button
+            g.drawPixmap(Assets.buttons, rightButtonBounds.getX(), rightButtonBounds.getY(), 50, 200,
+                    rightButtonBounds.getWidth()+1, rightButtonBounds.getHeight()+1); // right button
         }
     }
     
@@ -309,8 +215,10 @@ public class GameScreen extends Screen {
             Graphics g = game.getGraphics();
             
             g.drawPixmap(Assets.readymenu, 58, 100);
-            g.drawPixmap(Assets.buttons, 20, 425, 50, 150, 51, 51); // left button
-            g.drawPixmap(Assets.buttons, 250, 425, 50, 200, 51, 51); // right button
+            g.drawPixmap(Assets.buttons, leftButtonBounds.getX(), leftButtonBounds.getY(), 50, 150,
+                    leftButtonBounds.getWidth()+1, leftButtonBounds.getHeight()+1);  // left button
+            g.drawPixmap(Assets.buttons, rightButtonBounds.getX(), rightButtonBounds.getY(), 50, 200,
+                    rightButtonBounds.getWidth()+1, rightButtonBounds.getHeight()+1); // right button
         }
     }
 
@@ -321,8 +229,7 @@ public class GameScreen extends Screen {
             for(int i = 0; i < len; i++) {
                 TouchEvent event = touchEvents.get(i);
                 if(event.type == TouchEvent.TOUCH_UP) {
-                    if(event.x >= 128 && event.x <= 192 &&
-                        event.y >= 200 && event.y <= 264) {
+                    if (xButtonBounds.contains(event.x, event.y)) {
                         if(Settings.soundEnabled)
                             Assets.click.play(1);
                         game.setScreen(new StartScreen(game));
@@ -338,7 +245,8 @@ public class GameScreen extends Screen {
             Graphics g = game.getGraphics();
             
             g.drawPixmap(Assets.gameoverscreen, 0, 0);
-            g.drawPixmap(Assets.buttons, 128, 200, 0, 100, 51, 51);
+            g.drawPixmap(Assets.buttons, xButtonBounds.getX(), xButtonBounds.getY(), 0, 100,
+                    xButtonBounds.getWidth()+1, xButtonBounds.getHeight()+1);
             drawText(g, "" + SnakoidWorld.getInstance().getScore(), 180, 280);
         }
     }

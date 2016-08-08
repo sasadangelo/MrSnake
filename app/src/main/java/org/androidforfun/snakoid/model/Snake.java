@@ -59,27 +59,19 @@ public class Snake {
     
     public void eat() {
         SnakeTail tail = (SnakeTail) parts.get(parts.size()-1);
-        parts.add(parts.size()-1, new SnakeBody(tail.x, tail.y, tail.direction));
+        parts.add(parts.size()-1, new SnakeBody(tail.getX(), tail.getY(), tail.direction));
         switch (tail.direction) {
             case UP:
-                tail.y+=1;
-                if(tail.y > 12)
-                    tail.y = 0;
+                tail.moveDown();
                 break;
             case DOWN:
-                tail.y-=1;
-                if(tail.y < 0)
-                    tail.y = 12;
+                tail.moveUp();
                 break;
             case LEFT:
-                tail.x+=1;
-                if(tail.x > 9)
-                    tail.x = 0;
+                tail.moveRight();
                 break;
             case RIGHT:
-                tail.x-=1;
-                if(tail.x < 0)
-                    tail.x = 9;
+                tail.moveLeft();
                 break;
         }
     }
@@ -93,35 +85,26 @@ public class Snake {
         for(int i = last; i > 0; i--) {
             SnakeBody before = parts.get(i-1);
             SnakeBody part = parts.get(i);
-            part.x = before.x;
-            part.y = before.y;
+            part.setX(before.getX());
+            part.setY(before.getY());
             part.direction=before.direction;
         }
 
         head.direction=direction;
         switch (direction) {
             case UP:
-                head.y -= 1;
+                head.moveUp();
                 break;
             case LEFT:
-                head.x -= 1;
+                head.moveLeft();
                 break;
             case DOWN:
-                head.y += 1;
+                head.moveDown();
                 break;
             case RIGHT:
-                head.x += 1;
+                head.moveRight();
                 break;
         }
-
-        if(head.x < 0)
-            head.x = 9;
-        if(head.x > 9)
-            head.x = 0;
-        if(head.y < 0)
-            head.y = 12;
-        if(head.y > 12)
-            head.y = 0;
 
         switch (neckDirection) {
             case UP_RIGHT:
@@ -172,28 +155,25 @@ public class Snake {
         SnakeBody head = parts.get(0);
         for(int i = 1; i < len; i++) {
             SnakeBody part = parts.get(i);
-            if(part.x == head.x && part.y == head.y)
+            if (head.hit(part))
+                //if(part.getX() == head.getX() && part.getY() == head.getY())
                 return true;
-        }        
+        }
         return false;
     }
 
     public Direction getDirection() {
         return direction;
     }
-
     public SnakeHead getSnakeHead() {
         return (SnakeHead) parts.get(0);
     }
-
     public SnakeTail getSnakeTail() {
         return (SnakeTail) parts.get(parts.size()-1);
     }
-
     public SnakeBody getSnakeBody(int i) {
         return parts.get(i);
     }
-
     public int getLength() {
         return parts.size();
     }

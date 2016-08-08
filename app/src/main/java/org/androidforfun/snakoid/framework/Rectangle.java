@@ -39,7 +39,7 @@ public class Rectangle {
 	}
 
 	public boolean contains(int x, int y) {
-		return this.x <= x && this.x + this.width >= x && this.y <= y && this.y + this.height >= y;
+		return x >= this.x && x < this.x + this.width && y >= this.y && y < this.y + this.height;
 	}
 
 	public boolean contains(Rectangle rectangle) {
@@ -54,8 +54,8 @@ public class Rectangle {
 	}
 
 	public boolean overlaps(Rectangle r) {
-		return (contains(r.x, r.y) || contains(r.x+r.width, r.y) || contains(r.x, r.y+r.width) ||
-				contains(r.x+r.width, r.y+r.width));
+		return (contains(r.x, r.y) || contains(r.x+r.width-1, r.y) || contains(r.x, r.y+r.width-1) ||
+				contains(r.x+r.width-1, r.y+r.width-1));
 	}
 
 	public void set(Rectangle rect) {

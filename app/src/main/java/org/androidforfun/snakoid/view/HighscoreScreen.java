@@ -1,5 +1,6 @@
 package org.androidforfun.snakoid.view;
 
+import org.androidforfun.snakoid.framework.Rectangle;
 import org.androidforfun.snakoid.model.Settings;
 import org.androidforfun.snakoid.framework.Game;
 import org.androidforfun.snakoid.framework.Graphics;
@@ -9,6 +10,9 @@ import org.androidforfun.snakoid.framework.Screen;
 import java.util.List;
 
 public class HighscoreScreen extends Screen {
+    private Rectangle backgroundBounds;
+    private Rectangle backButtonBounds;
+
     String lines[] = new String[5];
 
     public HighscoreScreen(Game game) {
@@ -17,6 +21,9 @@ public class HighscoreScreen extends Screen {
         for (int i = 0; i < 5; i++) {
             lines[i] = "" + (i + 1) + ". " + Settings.highscores[i];
         }
+
+        backgroundBounds=new Rectangle(0, 0, 320, 480);
+        backButtonBounds=new Rectangle(32, 370, 50, 50);
     }
 
     @Override
@@ -28,7 +35,7 @@ public class HighscoreScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
-                if (event.x >= 32 &&  event.x < 82 && event.y >= 370 && event.y < 430) {
+                if (backButtonBounds.contains(event.x, event.y)) {
                     if(Settings.soundEnabled)
                         Assets.click.play(1);
                     game.setScreen(new StartScreen(game));
@@ -41,17 +48,15 @@ public class HighscoreScreen extends Screen {
     @Override
     public void draw(float deltaTime) {
         Graphics g = game.getGraphics();
-
-        g.drawPixmap(Assets.highscoresscreen, 0, 0);
-        g.drawPixmap(Assets.mainmenu, 64, 20, 0, 42, 196, 42);
+        g.drawPixmap(Assets.highscoresscreen, backgroundBounds.getX(), backgroundBounds.getY());
 
         int y = 100;
         for (int i = 0; i < 5; i++) {
             drawText(g, lines[i], 20, y);
             y += 50;
         }
-
-        g.drawPixmap(Assets.buttons, 32, 370, 50, 50, 51, 51);
+        g.drawPixmap(Assets.buttons, backButtonBounds.getX(), backButtonBounds.getY(), 50, 50,
+                backButtonBounds.getWidth()+1, backButtonBounds.getHeight()+1);
     }
 
     public void drawText(Graphics g, String line, int x, int y) {

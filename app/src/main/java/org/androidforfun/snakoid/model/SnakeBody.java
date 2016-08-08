@@ -1,18 +1,16 @@
 package org.androidforfun.snakoid.model;
 
-public class SnakeBody {
-    protected int x;
-    protected int y;
+import org.androidforfun.snakoid.framework.Actor;
+
+public class SnakeBody extends Actor {
     protected Direction direction;
 
     public SnakeBody() {
-        this.x = 0;
-        this.y = 0;
+        super(0, 0, 1, 1);
     }
 
     public SnakeBody(int x, int y, Direction direction) {
-        this.x = x;
-        this.y = y;
+        super(x, y, 1, 1);
         this.direction=direction;
     }
 
@@ -25,11 +23,28 @@ public class SnakeBody {
                 this.direction==Direction.LEFT || this.direction==Direction.DOWN);
     }
 
-    public int getX() {
-        return x;
+    public void moveUp() {
+        this.y-=1;
+        if (this.y < 0)
+            this.y=12;
     }
-    public int getY() {
-        return y;
+
+    public void moveDown() {
+        this.y+=1;
+        if (this.y > 12)
+            this.y=0;
+    }
+
+    public void moveLeft() {
+        this.x-=1;
+        if (this.x < 0)
+            this.x=9;
+    }
+
+    public void moveRight() {
+        this.x+=1;
+        if (this.x > 9)
+            this.x=0;
     }
 
     public Direction getDirection() {
@@ -39,4 +54,3 @@ public class SnakeBody {
         this.direction=direction;
     }
 }
-

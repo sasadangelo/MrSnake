@@ -18,7 +18,7 @@ public class SnakoidWorld {
         GameOver
     }
 
-    GameState state = GameState.Ready;
+    private GameState state = GameState.Ready;
 
     boolean fields[][] = new boolean[WORLD_WIDTH][WORLD_HEIGHT];
     Random random = new Random();
@@ -55,7 +55,7 @@ public class SnakoidWorld {
         int len = snake.getLength();
         for (int i = 0; i < len; i++) {
             SnakeBody part = snake.getSnakeBody(i);
-            fields[part.x][part.y] = true;
+            fields[part.getX()][part.getY()] = true;
         }
 
         int fruitX = random.nextInt(WORLD_WIDTH);
@@ -89,7 +89,7 @@ public class SnakoidWorld {
                 return;
             }
 
-            if (snake.getSnakeHead().x == fruit.getX() && snake.getSnakeHead().y == fruit.getY()) {
+            if (snake.getSnakeHead().getX() == fruit.getX() && snake.getSnakeHead().getY() == fruit.getY()) {
                 score += SCORE_INCREMENT;
                 snake.eat();
                 if (snake.getLength() == WORLD_WIDTH * WORLD_HEIGHT) {
