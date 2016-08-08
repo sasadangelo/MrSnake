@@ -2,7 +2,7 @@ package org.androidforfun.snakoid.model;
 
 import java.util.Random;
 
-public class SnakoidWorld {
+public class MrSnakeWorld {
     static final int WORLD_WIDTH = 10;
     static final int WORLD_HEIGHT = 13;
 
@@ -31,16 +31,16 @@ public class SnakoidWorld {
     private Fruit fruit;
 
     // the private static instance used to implement the Singleton pattern.
-    private static SnakoidWorld instance = null;
+    private static MrSnakeWorld instance = null;
     
-    private SnakoidWorld() {
+    private MrSnakeWorld() {
         snake = new Snake();
         placeFruit();
     }
 
-    public static SnakoidWorld getInstance() {
+    public static MrSnakeWorld getInstance() {
         if (instance == null) {
-            instance = new SnakoidWorld();
+            instance = new MrSnakeWorld();
         }
         return instance;
     }

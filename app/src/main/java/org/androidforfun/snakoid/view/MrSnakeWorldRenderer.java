@@ -7,18 +7,18 @@ import org.androidforfun.snakoid.model.Snake;
 import org.androidforfun.snakoid.model.SnakeBody;
 import org.androidforfun.snakoid.model.SnakeHead;
 import org.androidforfun.snakoid.model.SnakeTail;
-import org.androidforfun.snakoid.model.SnakoidWorld;
+import org.androidforfun.snakoid.model.MrSnakeWorld;
 
-public class SnakoidWorldRenderer {
+public class MrSnakeWorldRenderer {
     private Graphics g;
 
-    public SnakoidWorldRenderer(Graphics graphics) {
+    public MrSnakeWorldRenderer(Graphics graphics) {
         g=graphics;
     }
 
     public void draw() {
-        Snake snake = SnakoidWorld.getInstance().getSnake();
-        Fruit fruit = SnakoidWorld.getInstance().getFruit();
+        Snake snake = MrSnakeWorld.getInstance().getSnake();
+        Fruit fruit = MrSnakeWorld.getInstance().getFruit();
 
         Pixmap fruitPixmap = null;
         switch(fruit.getType()) {

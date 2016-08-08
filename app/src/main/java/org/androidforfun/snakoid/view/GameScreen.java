@@ -5,12 +5,11 @@ import android.util.Log;
 import org.androidforfun.snakoid.framework.Game;
 import org.androidforfun.snakoid.framework.Graphics;
 import org.androidforfun.snakoid.framework.Input.TouchEvent;
-import org.androidforfun.snakoid.framework.Pixmap;
 import org.androidforfun.snakoid.framework.Rectangle;
 import org.androidforfun.snakoid.framework.Screen;
 import org.androidforfun.snakoid.framework.TextStyle;
 import org.androidforfun.snakoid.model.Settings;
-import org.androidforfun.snakoid.model.SnakoidWorld;
+import org.androidforfun.snakoid.model.MrSnakeWorld;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -20,7 +19,7 @@ public class GameScreen extends Screen {
     int oldScore = 0;
     private static final String LOG_TAG = "Snakoid.GameScreen";
     String score = "0";
-    Map<SnakoidWorld.GameState, GameState> states = new EnumMap<>(SnakoidWorld.GameState.class);
+    Map<MrSnakeWorld.GameState, GameState> states = new EnumMap<>(MrSnakeWorld.GameState.class);
 
     private Rectangle pauseButtonBounds;
     private Rectangle leftButtonBounds;
@@ -29,15 +28,15 @@ public class GameScreen extends Screen {
     private Rectangle resumeMenuBounds;
     private Rectangle homeMenuBounds;
 
-    private SnakoidWorldRenderer renderer;
+    private MrSnakeWorldRenderer renderer;
 
     public GameScreen(Game game) {
         super(game);
         Log.i(LOG_TAG, "constructor -- begin");
-        states.put(SnakoidWorld.GameState.Paused, new GamePaused());
-        states.put(SnakoidWorld.GameState.Ready, new GameReady());
-        states.put(SnakoidWorld.GameState.Running, new GameRunning());
-        states.put(SnakoidWorld.GameState.GameOver, new GameOver());
+        states.put(MrSnakeWorld.GameState.Paused, new GamePaused());
+        states.put(MrSnakeWorld.GameState.Ready, new GameReady());
+        states.put(MrSnakeWorld.GameState.Running, new GameRunning());
+        states.put(MrSnakeWorld.GameState.GameOver, new GameOver());
 
         pauseButtonBounds=new Rectangle(5, 20, 50, 50);
         leftButtonBounds=new Rectangle(20, 425, 50, 50);
@@ -46,7 +45,7 @@ public class GameScreen extends Screen {
         homeMenuBounds=new Rectangle(80, 148, 160, 48);
         xButtonBounds=new Rectangle(128, 200, 50, 50);
 
-        renderer = new SnakoidWorldRenderer(game.getGraphics());
+        renderer = new MrSnakeWorldRenderer(game.getGraphics());
     }
 
     @Override
@@ -54,7 +53,7 @@ public class GameScreen extends Screen {
         Log.i(LOG_TAG, "update -- begin");
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();
-        states.get(SnakoidWorld.getInstance().getState()).update(touchEvents, deltaTime);
+        states.get(MrSnakeWorld.getInstance().getState()).update(touchEvents, deltaTime);
     }
 
     @Override
@@ -64,7 +63,7 @@ public class GameScreen extends Screen {
         
         g.drawPixmap(Assets.background, 0, 0);
         renderer.draw();
-        states.get(SnakoidWorld.getInstance().getState()).draw();
+        states.get(MrSnakeWorld.getInstance().getState()).draw();
         TextStyle style = new TextStyle();
         style.setColor(0xffffffff);
         style.setTextSize(24);
@@ -102,11 +101,11 @@ public class GameScreen extends Screen {
     @Override
     public void pause() {
         Log.i(LOG_TAG, "pause -- begin");
-        if(SnakoidWorld.getInstance().getState() == SnakoidWorld.GameState.Running)
-            SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Paused);
+        if(MrSnakeWorld.getInstance().getState() == MrSnakeWorld.GameState.Running)
+            MrSnakeWorld.getInstance().setState(MrSnakeWorld.GameState.Paused);
 
-        if(SnakoidWorld.getInstance().getState() == SnakoidWorld.GameState.GameOver) {
-            Settings.addScore(SnakoidWorld.getInstance().getScore());
+        if(MrSnakeWorld.getInstance().getState() == MrSnakeWorld.GameState.GameOver) {
+            Settings.addScore(MrSnakeWorld.getInstance().getScore());
             Settings.save(game.getFileIO());
         }
     }
@@ -127,28 +126,28 @@ public class GameScreen extends Screen {
                         if(pauseButtonBounds.contains(event.x, event.y)) {
                             if(Settings.soundEnabled)
                                 Assets.click.play(1);
-                            SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Paused);
+                            MrSnakeWorld.getInstance().setState(MrSnakeWorld.GameState.Paused);
                             return;
                         }
                         break;
                     case TouchEvent.TOUCH_DOWN:
                         if(leftButtonBounds.contains(event.x, event.y)) {
-                            SnakoidWorld.getInstance().getSnake().turnAntiClockwise();
+                            MrSnakeWorld.getInstance().getSnake().turnAntiClockwise();
                         }
                         if(rightButtonBounds.contains(event.x, event.y)) {
-                            SnakoidWorld.getInstance().getSnake().turnClockwise();
+                            MrSnakeWorld.getInstance().getSnake().turnClockwise();
                         }
                         break;
                 }
             }
 
-            SnakoidWorld.getInstance().update(deltaTime);
-            if (SnakoidWorld.getInstance().getState() == SnakoidWorld.GameState.GameOver) {
+            MrSnakeWorld.getInstance().update(deltaTime);
+            if (MrSnakeWorld.getInstance().getState() == MrSnakeWorld.GameState.GameOver) {
                 if(Settings.soundEnabled)
                     Assets.bitten.play(1);
             }
-            if(oldScore != SnakoidWorld.getInstance().getScore()) {
-                oldScore = SnakoidWorld.getInstance().getScore();
+            if(oldScore != MrSnakeWorld.getInstance().getScore()) {
+                oldScore = MrSnakeWorld.getInstance().getScore();
                 score = "" + oldScore;
                 if(Settings.soundEnabled)
                     Assets.eat.play(1);
@@ -178,7 +177,7 @@ public class GameScreen extends Screen {
                     if(resumeMenuBounds.contains(event.x, event.y)) {
                         if(Settings.soundEnabled)
                             Assets.click.play(1);
-                        SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Running);
+                        MrSnakeWorld.getInstance().setState(MrSnakeWorld.GameState.Running);
                         return;
                     }
                     if(homeMenuBounds.contains(event.x, event.y)) {
@@ -207,7 +206,7 @@ public class GameScreen extends Screen {
         void update(List<TouchEvent> touchEvents, float deltaTime) {
             Log.i(LOG_TAG, "update -- begin");
             if(touchEvents.size() > 0)
-                SnakoidWorld.getInstance().setState(SnakoidWorld.GameState.Running);
+                MrSnakeWorld.getInstance().setState(MrSnakeWorld.GameState.Running);
         }
 
         void draw() {
@@ -233,7 +232,7 @@ public class GameScreen extends Screen {
                         if(Settings.soundEnabled)
                             Assets.click.play(1);
                         game.setScreen(new StartScreen(game));
-                        SnakoidWorld.getInstance().clear();
+                        MrSnakeWorld.getInstance().clear();
                         return;
                     }
                 }
@@ -247,7 +246,7 @@ public class GameScreen extends Screen {
             g.drawPixmap(Assets.gameoverscreen, 0, 0);
             g.drawPixmap(Assets.buttons, xButtonBounds.getX(), xButtonBounds.getY(), 0, 100,
                     xButtonBounds.getWidth()+1, xButtonBounds.getHeight()+1);
-            drawText(g, "" + SnakoidWorld.getInstance().getScore(), 180, 280);
+            drawText(g, "" + MrSnakeWorld.getInstance().getScore(), 180, 280);
         }
     }
 
