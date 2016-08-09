@@ -1,6 +1,6 @@
 package org.androidforfun.snakoid.model;
 
-import org.androidforfun.snakoid.framework.Actor;
+import org.androidforfun.framework.Actor;
 
 public class SnakeBody extends Actor {
     protected Direction direction;

@@ -1,7 +1,7 @@
 package org.androidforfun.snakoid.view;
 
-import org.androidforfun.snakoid.framework.Graphics;
-import org.androidforfun.snakoid.framework.Pixmap;
+import org.androidforfun.framework.Graphics;
+import org.androidforfun.framework.Pixmap;
 import org.androidforfun.snakoid.model.Fruit;
 import org.androidforfun.snakoid.model.Snake;
 import org.androidforfun.snakoid.model.SnakeBody;

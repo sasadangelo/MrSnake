@@ -1,7 +1,7 @@
 package org.androidforfun.snakoid.view;
 
-import org.androidforfun.snakoid.framework.Pixmap;
-import org.androidforfun.snakoid.framework.Sound;
+import org.androidforfun.framework.Pixmap;
+import org.androidforfun.framework.Sound;
 
 public class Assets {
     public static Pixmap background;

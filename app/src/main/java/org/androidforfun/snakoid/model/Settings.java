@@ -1,6 +1,6 @@
 package org.androidforfun.snakoid.model;
 
-import org.androidforfun.snakoid.framework.FileIO;
+import org.androidforfun.framework.FileIO;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

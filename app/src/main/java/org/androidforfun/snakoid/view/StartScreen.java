@@ -1,11 +1,11 @@
 package org.androidforfun.snakoid.view;
 
-import org.androidforfun.snakoid.framework.Rectangle;
+import org.androidforfun.framework.Rectangle;
 import org.androidforfun.snakoid.model.Settings;
-import org.androidforfun.snakoid.framework.Game;
-import org.androidforfun.snakoid.framework.Graphics;
-import org.androidforfun.snakoid.framework.Input;
-import org.androidforfun.snakoid.framework.Screen;
+import org.androidforfun.framework.Game;
+import org.androidforfun.framework.Graphics;
+import org.androidforfun.framework.Input;
+import org.androidforfun.framework.Screen;
 
 import java.util.List;
 

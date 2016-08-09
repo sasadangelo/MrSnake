@@ -1,7 +1,7 @@
 package org.androidforfun.snakoid.view;
 
-import org.androidforfun.snakoid.framework.Screen;
-import org.androidforfun.snakoid.framework.impl.AndroidGame;
+import org.androidforfun.framework.Screen;
+import org.androidforfun.framework.impl.AndroidGame;
 
 public class MrSnakeGame extends AndroidGame {
     @Override

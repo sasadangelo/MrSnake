@@ -1,11 +1,11 @@
 package org.androidforfun.snakoid.view;
 
 import android.util.Log;
-import org.androidforfun.snakoid.framework.Game;
-import org.androidforfun.snakoid.framework.Graphics;
-import org.androidforfun.snakoid.framework.Graphics.PixmapFormat;
-import org.androidforfun.snakoid.framework.Pixmap;
-import org.androidforfun.snakoid.framework.Screen;
+import org.androidforfun.framework.Game;
+import org.androidforfun.framework.Graphics;
+import org.androidforfun.framework.Graphics.PixmapFormat;
+import org.androidforfun.framework.Pixmap;
+import org.androidforfun.framework.Screen;
 import org.androidforfun.snakoid.model.Settings;
 
 public class LoadingScreen extends Screen {

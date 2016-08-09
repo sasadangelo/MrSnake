@@ -2,12 +2,12 @@ package org.androidforfun.snakoid.view;
 
 import android.util.Log;
 
-import org.androidforfun.snakoid.framework.Game;
-import org.androidforfun.snakoid.framework.Graphics;
-import org.androidforfun.snakoid.framework.Input.TouchEvent;
-import org.androidforfun.snakoid.framework.Rectangle;
-import org.androidforfun.snakoid.framework.Screen;
-import org.androidforfun.snakoid.framework.TextStyle;
+import org.androidforfun.framework.Game;
+import org.androidforfun.framework.Graphics;
+import org.androidforfun.framework.Input.TouchEvent;
+import org.androidforfun.framework.Rectangle;
+import org.androidforfun.framework.Screen;
+import org.androidforfun.framework.TextStyle;
 import org.androidforfun.snakoid.model.Settings;
 import org.androidforfun.snakoid.model.MrSnakeWorld;
 
