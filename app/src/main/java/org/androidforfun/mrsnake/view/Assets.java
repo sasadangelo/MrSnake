@@ -30,7 +30,7 @@ public class Assets {
     public static Pixmap background;
     public static Pixmap logo;
 
-    // the screen used in Snakoid game
+    // the screen used in Mr Snake game
     public static Pixmap startscreen;
     public static Pixmap highscoresscreen;
     public static Pixmap gameoverscreen;

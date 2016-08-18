@@ -47,7 +47,7 @@ import java.util.Map;
  */
 public class GameScreen implements Screen {
     int oldScore = 0;
-    private static final String LOG_TAG = "Snakoid.GameScreen";
+    private static final String LOG_TAG = "MrSnake.GameScreen";
     String score = "0";
     Map<MrSnakeWorld.GameState, GameState> states = new EnumMap<>(MrSnakeWorld.GameState.class);
 

@@ -34,7 +34,7 @@ import org.androidforfun.mrsnake.model.Settings;
  * @author Salvatore D'Angelo
  */
 public class LoadingScreen implements Screen {
-    private static final String LOG_TAG = "Snakoid.LoadingScreen";
+    private static final String LOG_TAG = "MrSnake.LoadingScreen";
 
     @Override
     public void update(float deltaTime) {
