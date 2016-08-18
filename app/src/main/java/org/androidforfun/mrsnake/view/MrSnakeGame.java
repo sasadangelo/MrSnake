@@ -1,7 +1,7 @@
 /*
  *  Copyright (C) 2016 Salvatore D'Angelo
  *  This file is part of Mr Snake project.
- *  This file derive from the Mr Nom project developed by Mario Zechner for the Beginning Android
+ *  This file derives from the Mr Nom project developed by Mario Zechner for the Beginning Android
  *  Games book (chapter 6).
  *
  *  Mr Snake is free software: you can redistribute it and/or modify
@@ -16,29 +16,23 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.model;
+package org.androidforfun.mrsnake.view;
 
-import org.androidforfun.framework.Actor;
+import org.androidforfun.framework.Screen;
+import org.androidforfun.framework.impl.AndroidGame;
 
 /*
- * This class represents the fruit eaten by the snake. Possible fruit are: apple. orange and cherries.
- * A fruit has a (x, y) position on the game grid.
+ * This class represents the main activity of the Mr Snake game.
  *
  * @author Salvatore D'Angelo
  */
-public class Fruit extends Actor {
-    public static final int APPLE = 0;
-    public static final int CHERRIES = 1;
-    public static final int ORANGE = 2;
-
-    private int type;
-
-    public Fruit(int x, int y, int type) {
-        super(x, y, 1, 1);
-        this.type = type;
-    }
-
-    public int getType() {
-        return type;
+public class MrSnakeGame extends AndroidGame {
+    /*
+     * The first screen of the Mr Snake game is the LoadingScreen used to load all the assets in memory.
+     * Usually these screen have a progress bar that represents the percentace of work done. In our
+     * case we avoided this complication because the assets are loaded very quickly.
+     */
+    public Screen getStartScreen() {
+        return new LoadingScreen();
     }
 }

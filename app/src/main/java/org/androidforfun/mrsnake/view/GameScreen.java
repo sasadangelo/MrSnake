@@ -16,12 +16,12 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.view;
+package org.androidforfun.mrsnake.view;
 
 import android.util.Log;
 
-import org.androidforfun.snakoid.model.MrSnakeWorld;
-import org.androidforfun.snakoid.model.Settings;
+import org.androidforfun.mrsnake.model.MrSnakeWorld;
+import org.androidforfun.mrsnake.model.Settings;
 import org.androidforfun.framework.Gdx;
 import org.androidforfun.framework.Graphics;
 import org.androidforfun.framework.Input.TouchEvent;

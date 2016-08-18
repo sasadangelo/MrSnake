@@ -16,7 +16,7 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.model;
+package org.androidforfun.mrsnake.model;
 
 import java.util.ArrayList;
 import java.util.List;

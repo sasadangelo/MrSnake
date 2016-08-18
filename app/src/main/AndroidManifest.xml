@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.androidforfun.snakoid">
+      package="org.androidforfun.mrsnake">
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="8"/>
     <application android:icon="@drawable/icon" android:label="Mr Snake">
-        <activity android:name=".view.MrSnakeGame"
+        <activity android:name="org.androidforfun.mrsnake.view.MrSnakeGame"
                   android:label="Mr Snake"
                   android:configChanges="keyboard|keyboardHidden|orientation"
                   android:screenOrientation="portrait">

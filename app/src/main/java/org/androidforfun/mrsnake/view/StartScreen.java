@@ -16,11 +16,10 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.view;
+package org.androidforfun.mrsnake.view;
 
 import org.androidforfun.framework.Rectangle;
-import org.androidforfun.snakoid.model.Settings;
-import org.androidforfun.framework.Game;
+import org.androidforfun.mrsnake.model.Settings;
 import org.androidforfun.framework.Gdx;
 import org.androidforfun.framework.Graphics;
 import org.androidforfun.framework.Input;

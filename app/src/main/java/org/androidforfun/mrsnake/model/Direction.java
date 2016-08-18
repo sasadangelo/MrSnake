@@ -14,7 +14,7 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.model;
+package org.androidforfun.mrsnake.model;
 
 /*
  * This enum represents the possible direction the snake piece can have. Head and Body can go:

@@ -14,15 +14,15 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.model;
+package org.androidforfun.mrsnake.model;
 
 /*
- * This class represents the Mr Snake head.
+ * This class represents the Mr Snake tail.
  *
  * @author Salvatore D'Angelo
  */
-public class SnakeHead extends SnakeBody {
-    public SnakeHead(int x, int y, Direction direction) {
+public class SnakeTail extends SnakeBody {
+    public SnakeTail(int x, int y, Direction direction) {
         super(x, y, direction);
     }
 }

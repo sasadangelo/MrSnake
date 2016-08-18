@@ -16,7 +16,7 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.view;
+package org.androidforfun.mrsnake.view;
 
 import org.androidforfun.framework.Pixmap;
 import org.androidforfun.framework.Sound;

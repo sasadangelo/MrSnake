@@ -14,17 +14,16 @@
  *
  *  You should have received a copy of the GNU General Public License.
  */
-package org.androidforfun.snakoid.view;
+package org.androidforfun.mrsnake.view;
 
 import org.androidforfun.framework.Gdx;
-import org.androidforfun.framework.Graphics;
 import org.androidforfun.framework.Pixmap;
-import org.androidforfun.snakoid.model.Fruit;
-import org.androidforfun.snakoid.model.Snake;
-import org.androidforfun.snakoid.model.SnakeBody;
-import org.androidforfun.snakoid.model.SnakeHead;
-import org.androidforfun.snakoid.model.SnakeTail;
-import org.androidforfun.snakoid.model.MrSnakeWorld;
+import org.androidforfun.mrsnake.model.Fruit;
+import org.androidforfun.mrsnake.model.Snake;
+import org.androidforfun.mrsnake.model.SnakeBody;
+import org.androidforfun.mrsnake.model.SnakeHead;
+import org.androidforfun.mrsnake.model.SnakeTail;
+import org.androidforfun.mrsnake.model.MrSnakeWorld;
 
 /*
  * The responsibility of this class is to draw the model representation of Mr Snake world.
