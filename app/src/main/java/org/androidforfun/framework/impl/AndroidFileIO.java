@@ -1,3 +1,20 @@
+/*
+ *  Copyright (C) 2016 Mario Zechner
+ *  This file is part of Framework for book Beginning Android Games.
+ *  Modified by Salvatore D'Angelo
+ *
+ *  This library is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License.
+ */
 package org.androidforfun.framework.impl;
 
 import java.io.File;
@@ -12,6 +29,13 @@ import android.os.Environment;
 
 import org.androidforfun.framework.FileIO;
 
+/*
+ * This class implements the FileIO interface used to manage assets and files. The implementation is
+ * based on Java classes FileInputStream and FileOutputStream and Android class AssetManager.
+ *
+ * @author mzechner
+ * @author Salvatore D'Angelo
+ */
 public class AndroidFileIO implements FileIO {
     AssetManager assets;
     String externalStoragePath;

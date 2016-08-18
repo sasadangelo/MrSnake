@@ -1,5 +1,22 @@
+/*
+ *  Copyright (C) 2016 Salvatore D'Angelo
+ *  This file is part of Mr Snake project.
+ *
+ *  Mr Snake is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Mr Snake is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License.
+ */
 package org.androidforfun.snakoid.view;
 
+import org.androidforfun.framework.Gdx;
 import org.androidforfun.framework.Graphics;
 import org.androidforfun.framework.Pixmap;
 import org.androidforfun.snakoid.model.Fruit;
@@ -9,13 +26,15 @@ import org.androidforfun.snakoid.model.SnakeHead;
 import org.androidforfun.snakoid.model.SnakeTail;
 import org.androidforfun.snakoid.model.MrSnakeWorld;
 
+/*
+ * The responsibility of this class is to draw the model representation of Mr Snake world.
+ *
+ * @author Salvatore D'Angelo
+ */
 public class MrSnakeWorldRenderer {
-    private Graphics g;
-
-    public MrSnakeWorldRenderer(Graphics graphics) {
-        g=graphics;
-    }
-
+    /*
+     This method draw the model representation of Mr Snake world.
+     */
     public void draw() {
         Snake snake = MrSnakeWorld.getInstance().getSnake();
         Fruit fruit = MrSnakeWorld.getInstance().getFruit();
@@ -34,7 +53,7 @@ public class MrSnakeWorldRenderer {
         }
         int x = fruit.getX() * 32;
         int y = fruit.getY() * 32;
-        g.drawPixmap(fruitPixmap, x, y);
+        Gdx.graphics.drawPixmap(fruitPixmap, x, y);
         
         int len = snake.getLength();
         Pixmap snakeBodyPixmap = null;
@@ -120,10 +139,7 @@ public class MrSnakeWorldRenderer {
             }
             x = snakeBody.getX() * 32;
             y = snakeBody.getY() * 32;
-            g.drawPixmap(snakeBodyPixmap, x, y);
+            Gdx.graphics.drawPixmap(snakeBodyPixmap, x, y);
         }
-        
-        g.drawPixmap(Assets.controlpanelshadow, 0, 388);
-        g.drawPixmap(Assets.controlpanel, 0, 392);
     }
 }
