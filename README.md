@@ -4,6 +4,10 @@ Mr. Snake is a clone of the Snake game that in the 90s was released with Nokia p
 
 This game has been created only for educational purpose, it has no claim to be a complete game distributable through the Android market. It's my belief that you can get inspiration from this source code to implement your own video games.
 
+# Screenshots
+
+http://www.androidforfun.it/wp-content/uploads/2016/12/Screenshot_Mr_Snake_Home.png
+
 # Limitations
 
 Currently the game has only one level where the snake has an infinite theoretical life.
