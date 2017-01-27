@@ -14,7 +14,7 @@ Currently the game has only one level where the snake has an infinite theoretica
 
 # Credits
 
-The author of the framework code, later modified by me, is Mario Zachner (@badlogic) that issued the code with GPL3 license as a resource of the book Beginning Android Games. The framework is a very simplified version of the open source library libgdx released under GPL3 license. The code of the video game is an evolution of the Mr Nom project released by Mario Zachner with GPL3 license as a resource of the same book.
+The author of the framework code, later modified by me, is Mario Zachner (@badlogic) that released the code with GPL3 license as a resource of the book Beginning Android Games. The framework is a very simplified version of the open source library libgdx released under GPL3 license. The code of the video game is an evolution of the Mr Nom project released by Mario Zachner with GPL3 license as a resource of the same book.
 
 # License
 [GPL3](https://www.gnu.org/licenses/gpl-3.0.en.html)
