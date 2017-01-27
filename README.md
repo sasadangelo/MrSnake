@@ -6,7 +6,7 @@ This game has been created only for educational purpose, it has no claim to be a
 
 # Screenshots
 
-http://www.androidforfun.it/wp-content/uploads/2016/12/Screenshot_Mr_Snake_Home.png
+![Main Menu](http://www.androidforfun.it/wp-content/uploads/2016/12/Screenshot_Mr_Snake_Home.png)
 
 # Limitations
 
