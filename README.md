@@ -33,4 +33,4 @@ The source code will be downloaded and the MrSnake project will be created. Now 
 
 # Troubleshooting
 
-Sometime could happen that there is incompatibility between the level of gradle with the one installed in the development environment. When this occurs Android Studio will show also a link to fix it. Click the link to solve the issue.
+Sometime could happen that there is incompatibility between the level of gradle declared in the source code with the one installed in the development environment. When this occurs Android Studio will show also a link to fix it. Click the link to solve the issue.
