@@ -31,3 +31,6 @@ Directory Name: MrSnake
 
 The source code will be downloaded and the MrSnake project will be created. Now you can run the code doing Run->Run. You can execute the code on Physical or Virtual device. For more details you can read the last section of the following [article](http://www.androidforfun.it/crea-la-tua-prima-app-android/). It is in italian but you can translate it with Google Translator.
 
+# Troubleshooting
+
+Sometime could happen that there is incompatibility between the level of gradle with the one installed in the development environment. When this occurs Android Studio will show also a link to fix it. Click the link to solve the issue.
