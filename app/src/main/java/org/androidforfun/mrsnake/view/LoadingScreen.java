@@ -86,6 +86,9 @@ public class LoadingScreen implements Screen {
         Assets.click = Gdx.audio.newSound("click.ogg");
         Assets.eat = Gdx.audio.newSound("eat.ogg");
         Assets.bitten = Gdx.audio.newSound("bitten.ogg");
+        // Music
+        Assets.musicSnake = Gdx.audio.newMusic("snake.mp3");
+
         Settings.load(Gdx.fileIO);
         Gdx.game.setScreen(new StartScreen());
     }

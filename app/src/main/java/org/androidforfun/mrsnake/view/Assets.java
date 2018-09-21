@@ -20,6 +20,7 @@ package org.androidforfun.mrsnake.view;
 
 import org.androidforfun.framework.Pixmap;
 import org.androidforfun.framework.Sound;
+import org.androidforfun.framework.Music;
 
 /*
  This class contains the global references to all the assets used in MrSnakeGame game.
@@ -70,4 +71,6 @@ public class Assets {
     public static Sound click;
     public static Sound eat;
     public static Sound bitten;
+    // music
+    public static Music musicSnake;
 }

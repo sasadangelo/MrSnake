@@ -46,10 +46,10 @@ import java.util.Map;
  * @author Salvatore D'Angelo
  */
 public class GameScreen implements Screen {
-    int oldScore = 0;
     private static final String LOG_TAG = "MrSnake.GameScreen";
-    String score = "0";
     Map<MrSnakeWorld.GameState, GameState> states = new EnumMap<>(MrSnakeWorld.GameState.class);
+    int oldScore = 0;
+    String score = "0";
 
     private Rectangle gameoverScreenBounds;
     private Rectangle gameScreenBounds;
@@ -238,6 +238,11 @@ public class GameScreen implements Screen {
                 if(Settings.soundEnabled)
                     Assets.eat.play(1);
             }
+            if(Settings.soundEnabled)
+                if (!Assets.musicSnake.isPlaying()) {
+                    Assets.musicSnake.setLooping(true);
+                    Assets.musicSnake.play();
+                }
         }
 
         /*
@@ -285,6 +290,9 @@ public class GameScreen implements Screen {
                     }
                 }
             }
+            if(Settings.soundEnabled)
+                if (Assets.musicSnake.isPlaying())
+                    Assets.musicSnake.pause();
         }
 
         /*
@@ -356,6 +364,9 @@ public class GameScreen implements Screen {
                     }
                 }
             }
+            if(Settings.soundEnabled)
+                if (Assets.musicSnake.isPlaying())
+                    Assets.musicSnake.stop();
         }
 
         /*
