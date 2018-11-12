@@ -8,6 +8,9 @@ This game has been created only for educational purpose, it has no claim to be a
 
 ![Main Menu](https://raw.githubusercontent.com/wiki/sasadangelo/MrSnake/img/Screenshot_Mr_Snake_Home.png) ![Game](https://raw.githubusercontent.com/wiki/sasadangelo/MrSnake/img/Screenshot_Mr_Snake.png)
 
+# Video Demo
+[![Video Demo](https://raw.githubusercontent.com/wiki/sasadangelo/MrSnake/img/MrSnake_Video.png)](https://www.youtube.com/watch?v=UM2sEq6jmIU "Video Demo")
+
 # Limitations
 
 Currently the game has only one level where the snake has an infinite theoretical life.
